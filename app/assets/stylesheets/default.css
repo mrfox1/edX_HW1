@@ -48,6 +48,14 @@ table#movies th, table#movies td {
   padding: 4px;
   text-align: left;
 }
+
+table#movies th .current {
+    padding-right: 12px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: yellow;
+}
+
 #notice #warning {
   background: rosybrown;
   margin: 1em 0;
