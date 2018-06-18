@@ -12,13 +12,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    if params[:ratings].present?
-      @ratings = params[:ratings].keys.to_a
-      @movies = Movie.order(sort_column + ' ' + sort_direction).where(rating: @ratings)
+    @all_ratings = %w[G PG PG-13 R NC-17]
+    if params[:ratings] || session[:ratings]
+      session[:ratings] = params[:ratings].keys.to_a unless params[:ratings].blank?
+      @movies = Movie.order(sort_column + ' ' + sort_direction).where(rating: session[:ratings])
     else
       @movies = Movie.order(sort_column + ' ' + sort_direction)
     end
-    @all_ratings = %w[G PG PG-13 R NC-17]
   end
 
   def new
