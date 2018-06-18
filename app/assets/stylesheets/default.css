@@ -49,7 +49,7 @@ table#movies th, table#movies td {
   text-align: left;
 }
 
-table#movies th .current {
+table#movies tr .current {
     padding-right: 12px;
     background-repeat: no-repeat;
     background-position: right center;

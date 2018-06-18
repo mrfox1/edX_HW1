@@ -12,7 +12,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.order(sort_column + ' ' + sort_direction)
+    if params[:ratings].present?
+      @ratings = params[:ratings].keys.to_a
+      @movies = Movie.order(sort_column + ' ' + sort_direction).where(rating: @ratings)
+    else
+      @movies = Movie.order(sort_column + ' ' + sort_direction)
+    end
+    @all_ratings = %w[G PG PG-13 R NC-17]
   end
 
   def new
